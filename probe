@@ -1,0 +1,14 @@
+#!/bin/bash
+
+URL="https://newcap.leanstream.co/CFRQFM-MP3?args=3rdparty_02"
+Title=""
+
+while true
+do
+  NewTitle=$(ffprobe $URL 2>&1 | grep StreamTitle | cut -c 22-);
+  if [ "$Title" != "$NewTitle" ];
+    then Title=$NewTitle;
+    echo $Title;
+  fi;
+  sleep 20;
+done

@@ -1,0 +1,2 @@
+#!/bin/bash
+zenity --list --width=400 --height=600 --name=launcher --title=menu --column=Apps --hide-header `compgen -c | sort -u ` | xargs -r swaymsg -t command exec

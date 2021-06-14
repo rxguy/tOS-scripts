@@ -1,0 +1,55 @@
+#!/bin/bash
+
+# Functions
+
+function listfiles {
+    echo "Listing Files for $1"
+    for file in $1;
+        do
+        ls $file;
+        done
+    echo;
+}
+
+
+function firstline {
+    head -1 $1;
+}
+
+function getname {
+    firstline $(grep Name= $1);
+}
+
+function getexec {
+    firstline $(grep Exec= $1);
+}
+
+function parse {
+    for file in $SYSDIR; 
+        do 
+        getname $file;
+        getexec $file;
+        echo;
+        done
+
+}
+# End of Functions
+
+# Directories
+SYSDIR=/usr/share/applications/*.desktop
+LOCALDIR=~/.local/share/applications/*.desktop
+#End of Directories
+
+#ls $SYSDIR/*.desktop
+#ls $LOCALDIR/*.desktop
+
+echo $1;
+echo;
+
+listfiles $SYSDIR;
+
+parse $SYSDIR;
+
+#listfiles $LOCALDIR;
+
+#parse $LOCALDIR;

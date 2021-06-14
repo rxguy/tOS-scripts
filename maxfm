@@ -1,0 +1,3 @@
+#!/bin/bash
+URL="https://mbsradio.leanstream.co/CHERFM-MP3?args=web_02"
+ffplay $URL
